@@ -33,7 +33,8 @@ class Router
         // 2- check if user route exists in our valid routes lists
         if (!(self::route_exists(self::$current_route))) 
         {
-            echo "Route self::$current_route not found!!<br>";
+            $cr = self::$current_route;
+            echo "Route $cr not found!!<br>";
             header("HTTP/1.0 404 Not Found");
             echo "errors.404";
             //View::load('errors.404');
@@ -126,7 +127,7 @@ class Router
 
     public static function get_current_route()
     {
-        $current_uri = str_replace(SUB_DIRECTORY, '', $_SERVER['REQUEST_URI']);
+        $current_uri = str_replace(strtolower(SUB_DIRECTORY), '', strtolower($_SERVER['REQUEST_URI']));
         if($current_uri === '')
         {
             $current_uri = '/';

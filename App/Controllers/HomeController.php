@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Controllers;
+use App\Services\View\View;
+
 
 class HomeController
 {
 
     public function __construct()
     {
-        echo "im HomeController";
+        // echo ".      I am in HomeController.<br>";
     }
 
     public function index()
     {
-        echo "I am in Index Method.";
+        View::load('index');
     }
 }
